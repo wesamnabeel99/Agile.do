@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginSmall">8dp</dimen>
+    <dimen name="marginNormal">16dp</dimen>
+    <dimen name="madginBig">24dp</dimen>
+    <dimen name="marginGaint">32dp</dimen>
+
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="padding_big">24dp</dimen>
+    <dimen name="padding_gaint">32dp</dimen>
+    <dimen name="card_elevation_normal">8dp</dimen>
+
+</resources>
