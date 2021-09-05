@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color">
+    android:background="@color/background_color"
+    android:padding="@dimen/paddingSmall">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_recycler_view"
@@ -20,10 +21,10 @@
         android:id="@+id/add_task"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/add_card_margin_left_right_big"
-        android:layout_marginEnd="@dimen/add_card_margin_left_right_big"
-        android:layout_marginBottom="@dimen/add_card_margin_bottom_big"
-        android:padding="@dimen/padding_normal"
+        android:layout_marginStart="@dimen/marginNormal"
+        android:layout_marginEnd="@dimen/marginNormal"
+        android:layout_marginBottom="@dimen/marginNormal"
+        android:padding="@dimen/paddingNormal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="+ Add Task"
