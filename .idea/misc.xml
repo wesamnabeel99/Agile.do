@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SMART WAY/AndroidStudioProjects/Agile.do/app/src/main/res/layout/item_task.xml" value="0.29483695652173914" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/activity_home.xml" value="0.128125" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/activity_main.xml" value="0.128125" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/fragment_home.xml" value="0.128125" />
-        <entry key="..\:/bk/Agiledo/app/src/main/res/layout/item_task.xml" value="0.4122938530734633" />
+        <entry key="..\:/bk/Agiledo/app/src/main/res/layout/item_task.xml" value="0.22" />
       </map>
     </option>
   </component>
