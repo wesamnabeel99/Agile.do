@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
+import com.example.agiledo.data.TaskDbHelper
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ActivityHomeBinding
 import java.util.*
@@ -13,12 +14,14 @@ class HomeActivity : AppCompatActivity() {
     //region initilize variables
     private val homeFragment = HomeFragment()
     lateinit var binding: ActivityHomeBinding
+
     //endregion
 
     //region onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
         setup()
     }
     //endregion
