@@ -34,6 +34,7 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setup()
         addCallbacks()
     }
     //endregion
@@ -46,6 +47,4 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
     protected fun log(value: String){
         Log.v(LOG_TAG,value)
     }
-
-
 }

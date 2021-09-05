@@ -5,10 +5,12 @@
     <dimen name="madginBig">24dp</dimen>
     <dimen name="marginGaint">32dp</dimen>
 
-    <dimen name="padding_small">8dp</dimen>
-    <dimen name="padding_normal">16dp</dimen>
-    <dimen name="padding_big">24dp</dimen>
-    <dimen name="padding_gaint">32dp</dimen>
+    <dimen name="paddingSmall">8dp</dimen>
+    <dimen name="paddingNormal">16dp</dimen>
+    <dimen name="paddingBig">24dp</dimen>
+    <dimen name="paddingGaint">32dp</dimen>
     <dimen name="card_elevation_normal">8dp</dimen>
+    <dimen name="cardCornersNormal">8dp</dimen>
+    <dimen name="marginHuge">48dp</dimen>
 
 </resources>

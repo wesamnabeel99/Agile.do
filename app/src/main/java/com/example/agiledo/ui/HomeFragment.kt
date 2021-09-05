@@ -13,7 +13,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
       override fun setup() {
         val adapter = TaskAdapter(DataManager.listOfTasks)
-        binding?.takssRecyclerView?.adapter =adapter
+        binding?.taskRecyclerView?.adapter =adapter
     }
 
     override fun addCallbacks() {

@@ -2,49 +2,86 @@
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     app:cardElevation="@dimen/card_elevation_normal"
+    app:cardCornerRadius="@dimen/cardCornersNormal"
     android:layout_margin="@dimen/marginNormal"
     >
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/padding_normal">
+        android:alpha="0.7"
+        android:padding="@dimen/paddingNormal">
 
-        <TextView
-            android:id="@+id/task_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="text test text test"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/pencil_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:rotationY="180"
+            android:background="@drawable/ic_pencil"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/delete_task"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/marginNormal"
+            android:background="@drawable/ic_trash"
+            android:rotationY="180"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/task_assigned_to"
+            app:layout_constraintTop_toTopOf="@+id/task_assigned_to"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/task_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/marginSmall"
+            android:text="Title"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/pencil_image"
+            app:layout_constraintStart_toEndOf="@+id/pencil_image"
+            app:layout_constraintTop_toTopOf="@+id/pencil_image" />
 
         <TextView
             android:id="@+id/task_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="okokokok"
-            app:layout_constraintEnd_toEndOf="@+id/task_name"
-            app:layout_constraintStart_toStartOf="@+id/task_name"
-            app:layout_constraintTop_toBottomOf="@+id/task_name" />
+            android:layout_marginTop="@dimen/marginSmall"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/pencil_image"
+            app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
         <TextView
             android:id="@+id/task_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintEnd_toEndOf="@+id/task_description"
+            android:layout_marginTop="@dimen/marginSmall"
+            android:gravity="left"
+            android:text="Task start date"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/task_description"
             app:layout_constraintTop_toBottomOf="@+id/task_description" />
+
         <TextView
             android:id="@+id/task_due_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintEnd_toEndOf="@+id/task_start_date"
+            android:layout_marginTop="@dimen/marginSmall"
+            android:gravity="center"
+            android:text="Task end date"
+            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="@+id/task_start_date"
             app:layout_constraintTop_toBottomOf="@+id/task_start_date" />
 
@@ -52,12 +89,50 @@
             android:id="@+id/task_assigned_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="test"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/task_due_date"
+            android:gravity="left"
+            android:text="Person name"
+            android:textColor="@color/dark_gray"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/person_first_letter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.125"
+            app:layout_constraintStart_toEndOf="@+id/person_first_letter"
+            app:layout_constraintTop_toTopOf="@+id/person_first_letter" />
+
+        <TextView
+            android:id="@+id/person_first_letter"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="@dimen/marginNormal"
+            android:background="@drawable/first_letter_shape"
+            android:gravity="center"
+            android:text="T"
+            android:textColor="@color/purble"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@+id/task_due_date"
             app:layout_constraintTop_toBottomOf="@+id/task_due_date" />
 
+        <TextView
+            android:id="@+id/tag_one"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/marginNormal"
+            android:background="@drawable/tag_shape_design"
+            android:gravity="center"
+            android:text="Tag 1"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/tag_two"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tag_two"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/tag_shape_test"
+            android:gravity="center"
+            android:text="Tag 2"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
