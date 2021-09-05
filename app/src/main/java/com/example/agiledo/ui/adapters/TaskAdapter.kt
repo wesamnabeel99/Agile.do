@@ -3,13 +3,16 @@ package com.example.agiledo.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agiledo.R
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ItemTaskBinding
+import com.example.agiledo.ui.TaskInteractionListener
+import com.example.olympics.ui.TaskDiffUtil
 
 
-class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskHolder>(){
+class TaskAdapter(private var list: List<Task>, private val listener : TaskInteractionListener) : RecyclerView.Adapter<TaskAdapter.TaskHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_task,parent,false)
         return TaskHolder(itemView)
@@ -25,8 +28,24 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
             taskStartDate.text = currentItem.taskStartDate
             taskDueDate.text = currentItem.taskDueDate
             taskAssignedTo.text= currentItem.taskAssignedTo
+            deleteTask.setOnClickListener { listener.deleteTaskAt(position) }
         }
     }
+
+    //region set data
+    /**
+     * this function will call in HomeFragment to replace the old list of task with the new list of task after addition or deletion
+     * @param newList a List of objects of class Task representing the list to be replaced by
+     * @return nothing
+     * @author Anwar
+     */
+    fun setData(newList: List<Task>){
+        val diffResult = DiffUtil.calculateDiff(TaskDiffUtil(list, newList))
+        list = newList
+        diffResult.dispatchUpdatesTo(this)
+    }
+    //endregion
+
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskBinding.bind(itemView)
     }
