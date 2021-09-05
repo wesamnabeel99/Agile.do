@@ -20,14 +20,13 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
         var currentItem = list[position]
         holder.binding.apply {
-            taskName.text = currentItem.taskName
+            taskTitle.text = currentItem.taskName
             taskDescription.text = currentItem.taskDescription
             taskStartDate.text = currentItem.taskStartDate
             taskDueDate.text = currentItem.taskDueDate
             taskAssignedTo.text= currentItem.taskAssignedTo
         }
     }
-
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskBinding.bind(itemView)
     }

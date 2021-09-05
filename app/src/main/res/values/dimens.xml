@@ -10,5 +10,7 @@
     <dimen name="padding_big">24dp</dimen>
     <dimen name="padding_gaint">32dp</dimen>
     <dimen name="card_elevation_normal">8dp</dimen>
+    <dimen name="add_card_margin_left_right_big">45dp</dimen>
+    <dimen name="add_card_margin_bottom_big">20dp</dimen>
 
 </resources>
