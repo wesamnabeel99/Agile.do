@@ -1,5 +1,6 @@
 package com.example.agiledo.ui.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +26,12 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
             taskStartDate.text = currentItem.taskStartDate
             taskDueDate.text = currentItem.taskDueDate
             taskAssignedTo.text= currentItem.taskAssignedTo
+            personFirstLetter.text = currentItem.taskAssignedTo.first().toString()
+            taskImage.onFocusChangeListener = View.OnFocusChangeListener{
+                view, hasFocus -> if(!hasFocus){
+                    Log.i("test",taskImage.text.toString())
+                }
+            }
         }
     }
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

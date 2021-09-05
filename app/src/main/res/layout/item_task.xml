@@ -16,12 +16,10 @@
         android:alpha="0.7"
         android:padding="@dimen/paddingNormal">
 
-        <ImageView
-            android:id="@+id/pencil_image"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:rotationY="180"
-            android:background="@drawable/ic_pencil"
+        <com.vanniktech.emoji.EmojiEditText
+            android:id="@+id/task_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,9 +46,9 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/pencil_image"
-            app:layout_constraintStart_toEndOf="@+id/pencil_image"
-            app:layout_constraintTop_toTopOf="@+id/pencil_image" />
+            app:layout_constraintBottom_toBottomOf="@+id/task_image"
+            app:layout_constraintStart_toEndOf="@+id/task_image"
+            app:layout_constraintTop_toTopOf="@+id/task_image" />
 
         <TextView
             android:id="@+id/task_description"
@@ -60,7 +58,7 @@
             android:text="Description"
             android:textColor="@color/black"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/pencil_image"
+            app:layout_constraintStart_toStartOf="@+id/task_image"
             app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
         <TextView

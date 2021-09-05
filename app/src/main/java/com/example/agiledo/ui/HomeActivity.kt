@@ -8,6 +8,12 @@ import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ActivityHomeBinding
 import java.util.*
+import com.vanniktech.emoji.twitter.TwitterEmojiProvider
+
+import com.vanniktech.emoji.EmojiManager
+
+
+
 
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
@@ -25,6 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region setup
     private fun setup() {
+        EmojiManager.install(TwitterEmojiProvider())
         addFragment(homeFragment)
         for (i in 0..10) {
             val task = Task("task $i","beautiful task","12/2/2021","1/10/2021","Wesam $i")
