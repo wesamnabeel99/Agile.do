@@ -3,6 +3,8 @@ package com.example.agiledo.ui.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
@@ -26,6 +28,7 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
             taskStartDate.text = currentItem.taskStartDate
             taskDueDate.text = currentItem.taskDueDate
             taskAssignedTo.text= currentItem.taskAssignedTo
+            cardView.animation = AnimationUtils.loadAnimation(holder.binding.cardView.context,R.anim.anim_item)
         }
     }
 

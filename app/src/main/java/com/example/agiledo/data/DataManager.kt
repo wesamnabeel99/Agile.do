@@ -10,4 +10,8 @@ object DataManager {
         listOfTasks.add(task)
     }
 
+    fun deleteTask( task : Task ) {
+        listOfTasks.remove(task)
+    }
+
 }

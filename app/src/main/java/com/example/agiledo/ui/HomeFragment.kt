@@ -26,8 +26,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
           val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter))
           itemTouchHelper.attachToRecyclerView(thisItem)
 
+          val cardView = binding?.taskRecyclerView
 
-    }
+
+
+      }
 
     override fun addCallbacks() {
         //TODO : "Not Yet Implemented"
