@@ -18,7 +18,7 @@ class TaskDiffUtil(val tOldList : List<Task>, val tNewList : List<Task>) : DiffU
     //endregion
     //region areContentsTheSame
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return true
+        return false
     }
     //endregion
 
