@@ -2,6 +2,7 @@ package com.example.agiledo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
@@ -14,6 +15,7 @@ class HomeActivity : AppCompatActivity() {
     //region initilize variables
     private val homeFragment = HomeFragment()
     lateinit var binding: ActivityHomeBinding
+    lateinit var dbHelper:TaskDbHelper
 
     //endregion
 
@@ -21,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        dbHelper= TaskDbHelper(applicationContext)
         setup()
     }
     //endregion
@@ -29,10 +31,20 @@ class HomeActivity : AppCompatActivity() {
     //region setup
     private fun setup() {
         addFragment(homeFragment)
+
         for (i in 0..10) {
-            val task = Task("task $i","beautiful task","12/2/2021","1/10/2021","Wesam $i")
-            DataManager.addTask(task)
+            val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
+            DataManager.addTask(task1)
+            DataManager.addNewTask(task1, dbHelper)
+            //put the database columns values in list<TAsk>
+            val task = DataManager.readTask(dbHelper)
+
+            Log.i(
+                "MAIN_ACTIVITY",
+                "$task.id - ${task.taskName} -${task.taskDescription} -${task.taskStartDate} - ${task.taskDueDate} - ${task.taskAssignedTo}"
+            )
         }
+
     }
     //endregion
 

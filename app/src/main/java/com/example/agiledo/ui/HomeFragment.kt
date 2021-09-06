@@ -19,4 +19,12 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun addCallbacks() {
         //TODO : "Not Yet Implemented"
     }
+
+
+
+
+
+
+
+
 }
