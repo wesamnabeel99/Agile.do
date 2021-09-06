@@ -16,6 +16,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
       override fun setup() {
         val adapter = TaskAdapter(DataManager.listOfTasks)
         binding?.taskRecyclerView?.adapter =adapter
+
+          /**
+           * @param thisIteman an val to bind this item
+           * @param itemTouchHelper an val to add swipe to dismiss *
+           * @author Akram
+           **/
+          val thisItem = binding?.taskRecyclerView
+          val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter))
+          itemTouchHelper.attachToRecyclerView(thisItem)
+
+
     }
 
     override fun addCallbacks() {
@@ -23,6 +34,5 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
 
-//    var itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter = Task))
-//    itemTouchHelper.
+
 }
