@@ -2,7 +2,9 @@ package com.example.agiledo.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.agiledo.data.DataManager
+import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.FragmentHomeBinding
 import com.example.agiledo.ui.adapters.TaskAdapter
 
@@ -19,4 +21,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override fun addCallbacks() {
         //TODO : "Not Yet Implemented"
     }
+
+
+//    var itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter = Task))
+//    itemTouchHelper.
 }

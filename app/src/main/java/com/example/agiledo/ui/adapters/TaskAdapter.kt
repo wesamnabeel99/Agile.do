@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agiledo.R
+import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ItemTaskBinding
 
@@ -27,7 +28,14 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
             taskAssignedTo.text= currentItem.taskAssignedTo
         }
     }
+
+    fun deleteItem(pos: Int) {
+        DataManager.listOfTasks.removeAt(pos)
+        notifyDataSetChanged()
+    }
+
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskBinding.bind(itemView)
     }
+
 }
