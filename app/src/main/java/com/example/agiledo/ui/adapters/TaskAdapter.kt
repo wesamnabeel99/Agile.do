@@ -37,10 +37,6 @@ class TaskAdapter(private var list: List<Task>, private val listener : TaskInter
         }
     }
 
-    fun deleteItem(pos: Int) {
-        DataManager.listOfTasks.removeAt(pos)
-        notifyDataSetChanged()
-    }
 
 
     //region set data

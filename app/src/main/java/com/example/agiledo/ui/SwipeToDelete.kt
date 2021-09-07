@@ -2,6 +2,7 @@ package com.example.agiledo.ui
 
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.example.agiledo.data.DataManager
 import com.example.agiledo.ui.adapters.TaskAdapter
 
 class SwipeToDelete(var adapter: TaskAdapter): ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
@@ -15,7 +16,8 @@ class SwipeToDelete(var adapter: TaskAdapter): ItemTouchHelper.SimpleCallback(0,
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         val pos = viewHolder.adapterPosition
-        adapter.deleteItem(pos)
+        DataManager.deleteTaskAt(pos)
+        adapter.setData(DataManager.tasks)
     }
 
 
