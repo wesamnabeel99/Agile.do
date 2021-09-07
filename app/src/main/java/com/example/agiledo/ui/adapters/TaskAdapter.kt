@@ -1,5 +1,6 @@
 package com.example.agiledo.ui.adapters
 
+import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +22,7 @@ class TaskAdapter(private var list: List<Task>, private val listener : TaskInter
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
-        var currentItem = list[position]
+        val currentItem=list[position]
         holder.binding.apply {
             taskTitle.text = currentItem.taskName
             taskDescription.text = currentItem.taskDescription
