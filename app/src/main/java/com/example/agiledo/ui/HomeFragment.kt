@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
 
 
       }
-    }
+
     //endregion
     //region  addCallbacks
     override fun addCallbacks() {
