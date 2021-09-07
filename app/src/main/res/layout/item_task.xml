@@ -8,6 +8,7 @@
     app:cardElevation="@dimen/card_elevation_normal"
     app:cardCornerRadius="@dimen/cardCornersNormal"
     android:layout_margin="@dimen/marginNormal"
+    android:padding="@dimen/paddingNormal"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -16,12 +17,19 @@
         android:alpha="0.7"
         android:padding="@dimen/paddingNormal">
 
-        <com.vanniktech.emoji.EmojiEditText
+
+        <com.aghajari.emojiview.view.AXEmojiEditText
             android:id="@+id/task_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:maxLength="2"
+
+            android:gravity="center"
+            android:background="@drawable/emoji_edittext_shape"
+            android:textAllCaps="false"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/delete_task"
@@ -35,6 +43,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/task_assigned_to"
             app:layout_constraintTop_toTopOf="@+id/task_assigned_to"
+            app:layout_constraintVertical_bias="0.015"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
@@ -48,7 +57,8 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/task_image"
             app:layout_constraintStart_toEndOf="@+id/task_image"
-            app:layout_constraintTop_toTopOf="@+id/task_image" />
+            app:layout_constraintTop_toTopOf="@+id/task_image"
+            app:layout_constraintVertical_bias="0.185" />
 
         <TextView
             android:id="@+id/task_description"
@@ -132,5 +142,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>
