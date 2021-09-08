@@ -22,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
     //region onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_Agiledo)
         setContentView(R.layout.activity_home)
         dbHelper= TaskDbHelper(applicationContext)
         setup()
