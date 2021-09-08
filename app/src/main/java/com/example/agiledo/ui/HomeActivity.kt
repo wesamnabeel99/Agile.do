@@ -14,6 +14,7 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
     private val homeFragment = HomeFragment()
+    private val statsFragment = StatsFragment()
     lateinit var binding: ActivityHomeBinding
     lateinit var dbHelper:TaskDbHelper
 
@@ -30,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region setup
     private fun setup() {
-        addFragment(homeFragment)
+        addFragment(statsFragment)
 
         for (i in 0..10) {
             val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
