@@ -28,6 +28,7 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
     override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
+
         var currentItem = list[position]
         holder.binding.apply {
             taskTitle.text = currentItem.taskName
@@ -49,24 +50,35 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                 //Create dialog object and initialize its attribute
                 val dialog = Dialog(holder.binding.root.context)
                 dialog.setContentView(R.layout.emoji_dialog)
-                //Create emoji popup layout to select emoji from
-                val emojiPopUp = dialog.findViewById<AXEmojiPopupLayout>(R.id.emoji_layout)
                 //Create emoji view to store the emoji selected
                 val selected = dialog.findViewById<AXEmojiEditText>(R.id.selected_emoji)
-
                 val okBtn = dialog.findViewById<AppCompatButton>(R.id.ok_btn)
                 val cancelBtn = dialog.findViewById<AppCompatButton>(R.id.cancel_btn)
 
-                val emojiView = AXSingleEmojiView(holder.binding.root.context)
-                selected.inputType = InputType.TYPE_NULL
 
+                val emoji_one = dialog.findViewById<AXEmojiEditText>(R.id.emoji1)
+                val emoji_two = dialog.findViewById<AXEmojiEditText>(R.id.emoji2)
+                val emoji_three = dialog.findViewById<AXEmojiEditText>(R.id.emoji3)
+                val emoji_four = dialog.findViewById<AXEmojiEditText>(R.id.emoji4)
+                val emoji_five = dialog.findViewById<AXEmojiEditText>(R.id.emoji5)
+                val emoji_six = dialog.findViewById<AXEmojiEditText>(R.id.emoji6)
+                val emoji_seven = dialog.findViewById<AXEmojiEditText>(R.id.emoji7)
+                val emoji_eight = dialog.findViewById<AXEmojiEditText>(R.id.emoji8)
+
+                val emojiUnicode_one = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_two = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_three = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_four = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_five = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_six = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_seven = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+                val emojiUnicode_eight = AXEmojiUtils.getEmojiUnicode(0x1f60d)
+
+                selected.inputType = InputType.TYPE_NULL
                 cancelBtn.setOnClickListener{
                     dialog.dismiss()
                     taskImage.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode,20F)
                 }
-                emojiView.editText = selected
-                emojiPopUp.initPopupView(emojiView)
-                emojiPopUp.show()
                 dialog.show()
                 okBtn.setOnClickListener{
                     //TODO: Store the new emoji code in sql database.

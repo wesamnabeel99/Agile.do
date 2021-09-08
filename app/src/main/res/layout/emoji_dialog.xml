@@ -12,47 +12,145 @@
         android:id="@+id/selected_emoji"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginVertical="@dimen/marginNormal"
         android:background="@drawable/emoji_edittext_shape"
         android:gravity="center"
         android:maxLength="2"
         android:textSize="20sp"
-        android:layout_marginVertical="@dimen/marginNormal"
-        app:layout_constraintBottom_toTopOf="@+id/emoji_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.aghajari.emojiview.view.AXEmojiPopupLayout
-        android:id="@+id/emoji_layout"
-        android:layout_width="match_parent"
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="56dp"
+        android:text="1"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="56dp"
+        android:text="2"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="3"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji2"
+        app:layout_constraintTop_toBottomOf="@+id/selected_emoji" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="4"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji3"
+        app:layout_constraintTop_toBottomOf="@+id/selected_emoji" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="12dp"
+        android:text="5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emoji1" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:text="6"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji5"
+        app:layout_constraintTop_toBottomOf="@+id/emoji2" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:text="7"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji6"
+        app:layout_constraintTop_toBottomOf="@+id/emoji3" />
+
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:text="8"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji7"
+        app:layout_constraintTop_toBottomOf="@+id/emoji4" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="9"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji4"
+        app:layout_constraintTop_toBottomOf="@+id/selected_emoji" />
+
+    <com.aghajari.emojiview.view.AXEmojiTextView
+        android:id="@+id/emoji10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="10"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/emoji8"
+        app:layout_constraintTop_toBottomOf="@+id/emoji9" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ok_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/add_card_shape"
         android:text="OK"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emoji_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/emoji7" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="@drawable/emoji_edittext_shape"
         android:text="Cancel"
         android:textAllCaps="false"
@@ -60,7 +158,6 @@
         app:layout_constraintEnd_toEndOf="@+id/ok_btn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/ok_btn"
-        app:layout_constraintTop_toBottomOf="@+id/ok_btn"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintTop_toBottomOf="@+id/ok_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
