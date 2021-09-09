@@ -17,7 +17,7 @@ class TaskDbHelper(context:Context) :SQLiteOpenHelper(context,DB_NAME,null,DB_VE
      */
     override fun onCreate(sqliteDatabase: SQLiteDatabase?) {
        val createTable="CREATE TABLE ${Constants.Database.TABLE_NAME} (" +
-               "   ${Constants.Database.TASK_ID} INTEGER PRIMARY KEY," +
+               "   ${Constants.Database.TASK_ID} INTEGER," +
                "   ${Constants.Database.TASK_NAME} TEXT," +
                "   ${Constants.Database.TASK_DESCRIPTION} TEXT," +
                "   ${Constants.Database.TASK_START_DATE} TEXT," +

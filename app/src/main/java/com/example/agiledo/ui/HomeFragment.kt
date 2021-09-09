@@ -55,15 +55,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
      * @author Anwar
      */
     private fun addNewTask() {
+
         val newTask = Task(
+            id=Constants.taskId++,
             taskName = binding?.taskName?.text.toString(),
             taskDescription = binding?.taskDescription?.text.toString(),
             taskStartDate = binding?.startDate?.text.toString(),
             taskDueDate = binding?.dueDate?.text.toString(),
-            taskAssignedTo = binding?.personName?.text.toString()
-        )
+            taskAssignedTo = binding?.personName?.text.toString())
         DataManager.addTask(newTask)
-        adapter.setData(DataManager.tasksFromTable)
+        adapter.setData(DataManager.tasks)
     }
     //endregion
 
@@ -76,7 +77,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
      */
     override fun deleteTaskAt(index: Int) {
         DataManager.deleteTaskAt(index)
-        adapter.setData(DataManager.tasksFromTable)
+        adapter.setData(DataManager.tasks)
     }
     //endregion
 }

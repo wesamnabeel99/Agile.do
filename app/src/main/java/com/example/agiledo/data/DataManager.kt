@@ -7,6 +7,8 @@ import com.example.agiledo.utils.Constants
 object DataManager {
     //region initilize variables
     val tasksFromTable= mutableListOf<Task>()
+    val tasks:List<Task>
+    get()= tasksFromTable.toList()
     //endregion
 
     //region add task
@@ -18,7 +20,7 @@ object DataManager {
      */
     fun addTask(task: Task) {
         tasksFromTable.add(task)
-        addNewTask(task)
+        addNewTaskToDatabase(task)
     }
     //endregion
 
@@ -30,8 +32,9 @@ object DataManager {
      * @author Anwar
      */
     fun deleteTaskAt(index: Int){
+        var currentTask:Task= tasksFromTable[index]
         tasksFromTable.removeAt(index)
-        deleteTask(index+1)
+        deleteTask(currentTask.id)
     }
     //endregion
 
@@ -43,9 +46,10 @@ object DataManager {
      */
 
 
-    fun addNewTask(task: Task) {
+    fun addNewTaskToDatabase(task: Task) {
         val newEntry = ContentValues().apply {
 
+            put("id",task.id)
             put(Constants.Database.TASK_NAME, task.taskName)
             put(Constants.Database.TASK_DESCRIPTION, task.taskDescription)
             put(Constants.Database.TASK_START_DATE, task.taskStartDate)
@@ -96,7 +100,7 @@ object DataManager {
             val startDate = cursor.getString(Constants.CursorIndexes.TASK_START_DATE)
             val dueDate = cursor.getString(Constants.CursorIndexes.TASK_DUE_DATE)
             val author = cursor.getString(Constants.CursorIndexes.TASK_ASSIGNED_TO)
-            tasksFromTable.add(Task(taskName, taskDesc, startDate, dueDate, author))
+            tasksFromTable.add(Task(Constants.taskId++,taskName, taskDesc, startDate, dueDate, author))
 
         }
     }
@@ -104,8 +108,9 @@ object DataManager {
 
 
 
-    fun deleteTask(position:Int) {
-        Constants.dbHelper.writableDatabase.delete(Constants.Database.TABLE_NAME,"${Constants.Database.TASK_ID}=?", arrayOf<String>("$position"))
+    fun deleteTask(id:Int) {
+        Constants.dbHelper.writableDatabase.delete(Constants.Database.TABLE_NAME,"${Constants.Database.TASK_ID}=?", arrayOf<String>("$id"))
     }
+
 
 }
