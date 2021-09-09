@@ -8,6 +8,7 @@
     android:elevation="8dp"
     >
 
+
     <com.aghajari.emojiview.view.AXEmojiEditText
         android:id="@+id/selected_emoji"
         android:layout_width="32dp"
