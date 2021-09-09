@@ -2,6 +2,7 @@ package com.example.agiledo.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.agiledo.R
@@ -9,14 +10,13 @@ import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.TaskDbHelper
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ActivityHomeBinding
+import com.example.agiledo.utils.Constants
 import java.util.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(){
     //region initilize variables
     private val homeFragment = HomeFragment()
     lateinit var binding: ActivityHomeBinding
-    lateinit var dbHelper:TaskDbHelper
-
     //endregion
 
     //region onCreate
@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_Agiledo)
         setContentView(R.layout.activity_home)
-        dbHelper= TaskDbHelper(applicationContext)
+        Constants.createTable(applicationContext)
         setup()
     }
     //endregion
@@ -32,19 +32,7 @@ class HomeActivity : AppCompatActivity() {
     //region setup
     private fun setup() {
         addFragment(homeFragment)
-
-        for (i in 0..10) {
-            val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
-            DataManager.addTask(task1)
-            DataManager.addNewTask(task1, dbHelper)
-            //put the database columns values in list<TAsk>
-            val task = DataManager.readTask(dbHelper)
-
-            Log.i(
-                "MAIN_ACTIVITY",
-                "$task.id - ${task.taskName} -${task.taskDescription} -${task.taskStartDate} - ${task.taskDueDate} - ${task.taskAssignedTo}"
-            )
-        }
+        DataManager.readTask(Constants.dbHelper)
 
     }
     //endregion
@@ -81,5 +69,6 @@ class HomeActivity : AppCompatActivity() {
         transaction.commit()
     }
     //endregion
+
 
 }

@@ -1,11 +1,14 @@
 package com.example.agiledo.utils
 
+import android.content.Context
+import com.example.agiledo.data.TaskDbHelper
+
 object Constants {
-
-
+    lateinit var dbHelper:TaskDbHelper
+    fun createTable(context:Context){
+        dbHelper=TaskDbHelper(context)
+    }
     object Database {
-
-
         const val TABLE_NAME = "TASKS"
         const val TASK_ID = "id"
         const val TASK_NAME = "taskName"
@@ -29,6 +32,7 @@ object Constants {
 
 
     }
+
 
 
     }

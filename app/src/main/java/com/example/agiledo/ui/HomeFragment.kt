@@ -1,24 +1,27 @@
 package com.example.agiledo.ui
 
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.agiledo.data.DataManager
+import com.example.agiledo.data.TaskDbHelper
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.FragmentHomeBinding
 import com.example.agiledo.ui.adapters.TaskAdapter
+import com.example.agiledo.utils.Constants
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListener {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListener{
     //region initilize variables
     override val LOG_TAG: String = "HOME_FRAGMENT"
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding = FragmentHomeBinding::inflate
     lateinit var adapter : TaskAdapter
     //endregion
 
-    //region setup
     override fun setup() {
-        adapter = TaskAdapter(DataManager.listOfTasks, this)
+        adapter = TaskAdapter(DataManager.tasksFromTable, this)
         binding?.taskRecyclerView?.adapter =adapter
+
 
           /**
            * @param thisIteman an val to bind this item
@@ -26,7 +29,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
            * @author Akram
            **/
           val thisItem = binding?.taskRecyclerView
-          val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter))
+          val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter,Constants.dbHelper))
           itemTouchHelper.attachToRecyclerView(thisItem)
 
           val cardView = binding?.taskRecyclerView
@@ -60,7 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
             taskAssignedTo = binding?.personName?.text.toString()
         )
         DataManager.addTask(newTask)
-        adapter.setData(DataManager.tasks)
+        adapter.setData(DataManager.tasksFromTable)
     }
     //endregion
 
@@ -73,7 +76,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
      */
     override fun deleteTaskAt(index: Int) {
         DataManager.deleteTaskAt(index)
-        adapter.setData(DataManager.tasks)
+        adapter.setData(DataManager.tasksFromTable)
     }
     //endregion
 }
