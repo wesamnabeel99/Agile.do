@@ -34,20 +34,20 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>() {
         taskStatus.add("Done")
 
         // Y values
-        val noOfTasks = ArrayList<BarEntry>()
-        val value = DataManager.listOfTasks.size
-        noOfTasks.add(BarEntry(value.toFloat(),0))
-        noOfTasks.add(BarEntry(5.7f, 1))
-        noOfTasks.add(BarEntry(1.5f, 2))
+        val numberOfTasks = ArrayList<BarEntry>()
+        val listOfInBackingSize = DataManager.listOfTasks.size
+        numberOfTasks.add(BarEntry(listOfInBackingSize.toFloat(),0))
+        numberOfTasks.add(BarEntry(5.7f, 1))
+        numberOfTasks.add(BarEntry(1.5f, 2))
 
         //private fun
-        val barDataSet = BarDataSet(noOfTasks, "Task Status")
+        val barDataSet = BarDataSet(numberOfTasks, "Task Status")
         val colors = ColorTemplate.VORDIPLOM_COLORS + ColorTemplate.VORDIPLOM_COLORS + ColorTemplate.VORDIPLOM_COLORS
         barDataSet.colors = colors.toList()
 
         val barData = BarData (taskStatus , barDataSet)
 
-        binding?.barChart!!.apply{
+        binding?.barChart?.apply{
             data = barData
             invalidate()
         }
@@ -58,7 +58,7 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>() {
 
 
     private fun configureChartAppearance(){
-        binding?.barChart!!.apply{
+        binding?.barChart?.apply{
             setDrawGridBackground(false)
             setDrawBarShadow(false)
             setDrawValueAboveBar(true)
