@@ -11,7 +11,9 @@ import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
-    private val homeFragment = HomeFragment()
+  //  private val homeFragment = HomeFragment()
+ private val dateFragment=DateFragment()
+
     lateinit var binding: ActivityHomeBinding
     //endregion
 
@@ -25,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region setup
     private fun setup() {
-        addFragment(homeFragment)
+        addFragment(dateFragment)
         for (i in 0..10) {
             val task = Task("task $i","beautiful task","12/2/2021","1/10/2021","Wesam $i")
             DataManager.addTask(task)
