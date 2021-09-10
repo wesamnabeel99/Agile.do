@@ -1,5 +1,6 @@
 package com.example.agiledo.ui
 
+import android.os.Parcelable
 import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,14 +8,16 @@ import com.aghajari.emojiview.view.AXSingleEmojiView
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
+import com.example.agiledo.data.TaskDbHelper
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.FragmentAddDialogBinding
 import com.example.agiledo.databinding.FragmentHomeBinding
 import com.example.agiledo.ui.adapters.TaskAdapter
+import com.example.agiledo.utils.Constants
 import com.google.android.material.textfield.TextInputEditText
 import com.example.agiledo.utils.Date
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListener {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListener{
     //region initilize variables
     override val LOG_TAG: String = "HOME_FRAGMENT"
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding = FragmentHomeBinding::inflate
@@ -22,10 +25,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
 
     //endregion
 
-    //region setup
     override fun setup() {
-        adapter = TaskAdapter(DataManager.listOfTasks, this)
+        adapter = TaskAdapter(DataManager.tasksFromTable, this)
         binding?.taskRecyclerView?.adapter =adapter
+
 
           /**
            * @param thisIteman an val to bind this item
@@ -33,7 +36,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
            * @author Akram
            **/
           val thisItem = binding?.taskRecyclerView
-          val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter))
+          val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter,Constants.dbHelper))
           itemTouchHelper.attachToRecyclerView(thisItem)
 
           val cardView = binding?.taskRecyclerView
@@ -50,6 +53,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
            openAddDialog()
         }
     }
+
+    //region addNewTask
+    /**
+     * this function add new task of type object of class Task to the list of task
+     * @param nothing
+     * @return nothing
+     * @author Anwar
+     */
 
     private fun openAddDialog() {
         val addDialogView = LayoutInflater.from(context).inflate(R.layout.fragment_add_dialog, null) //Inflate the dialog with add view
@@ -71,7 +82,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
                 taskAssignedTo = dialogBinding.assignToInputEdittext.text.toString()
             )
             DataManager.addTask(newTask)
-            adapter.setData(DataManager.tasks)
+            adapter.setData(DataManager.tasksFromTable)
         }
     }
     //endregion
@@ -86,7 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
      */
     override fun deleteTaskAt(index: Int) {
         DataManager.deleteTaskAt(index)
-        adapter.setData(DataManager.tasks)
+        adapter.setData(DataManager.tasksFromTable)
     }
     //endregion
 }

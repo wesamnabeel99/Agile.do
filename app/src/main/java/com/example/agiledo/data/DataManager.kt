@@ -6,9 +6,9 @@ import com.example.agiledo.utils.Constants
 
 object DataManager {
     //region initilize variables
-    val listOfTasks = mutableListOf<Task>()
-    val tasks : List<Task>
-        get() = listOfTasks.toList()
+    val tasksFromTable= mutableListOf<Task>()
+    val tasks:List<Task>
+    get()= tasksFromTable.toList()
     //endregion
 
     //region add task
@@ -19,7 +19,8 @@ object DataManager {
      * @author Anwar
      */
     fun addTask(task: Task) {
-        listOfTasks.add(task)
+        tasksFromTable.add(task)
+        addNewTaskToDatabase(task)
     }
     //endregion
 
@@ -31,7 +32,7 @@ object DataManager {
      * @author Anwar
      */
     fun deleteTaskAt(index: Int){
-        listOfTasks.removeAt(index)
+        tasksFromTable.removeAt(index)
     }
     //endregion
 
@@ -43,9 +44,9 @@ object DataManager {
      */
 
 
-    fun addNewTask(task: Task, dbHelper: TaskDbHelper) {
+    fun addNewTaskToDatabase(task: Task) {
         val newEntry = ContentValues().apply {
-
+            put(Constants.Database.TASK_ID,0)
             put(Constants.Database.TASK_NAME, task.taskName)
             put(Constants.Database.TASK_DESCRIPTION, task.taskDescription)
             put(Constants.Database.TASK_START_DATE, task.taskStartDate)
@@ -54,7 +55,7 @@ object DataManager {
 
         }
 
-        dbHelper.writableDatabase.insert(Constants.Database.TABLE_NAME, null, newEntry)
+        Constants.dbHelper.writableDatabase.insert(Constants.Database.TABLE_NAME, null, newEntry)
 
 
     }
@@ -63,13 +64,14 @@ object DataManager {
     /**
      * read all values in columns of Task table in database , by put the variables that refer to column names in array and pass into the dbHelper.readableDatabase.query
      * save the values of cursor object(the values of columns Task tAble) in object of Task
-     * @return Task
+     * save all object in mutaleList of Task()
+     * @return Nothing
      * @param TaskDbHelper
-     * @author Tamara Mouneer
+     * @author Tamara Mouneer , mohammed ali
      */
 
-    fun readTask(dbHelper: TaskDbHelper):Task {
-        lateinit var task:Task
+    fun readTask(dbHelper: TaskDbHelper){
+        lateinit var task: Task
         val projection = arrayOf(
             Constants.Database.TASK_ID,
             Constants.Database.TASK_NAME,
@@ -79,7 +81,15 @@ object DataManager {
             Constants.Database.TASK_ASSIGNED_TO
         ) //the array of columns
         val cursor =
-            dbHelper.readableDatabase.query(Constants.Database.TABLE_NAME, projection, null, null, null, null, null)
+            dbHelper.readableDatabase.query(
+                Constants.Database.TABLE_NAME,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                null
+            )
         while (cursor.moveToNext()) {
             val id = cursor.getInt(Constants.CursorIndexes.TASK_ID)
             val taskName = cursor.getString(Constants.CursorIndexes.TASK_NAME)
@@ -87,20 +97,8 @@ object DataManager {
             val startDate = cursor.getString(Constants.CursorIndexes.TASK_START_DATE)
             val dueDate = cursor.getString(Constants.CursorIndexes.TASK_DUE_DATE)
             val author = cursor.getString(Constants.CursorIndexes.TASK_ASSIGNED_TO)
-             task=Task(taskName,taskDesc,startDate,dueDate,author)
-
-          // Log.i("MAIN_ACTIVITY", "$id - $taskName -$taskDesc -$startDate - $dueDate - $author")
+            tasksFromTable.add(Task(taskName, taskDesc, startDate, dueDate, author))
         }
-        return task
-
-
-    }
-
-
-
-
-    fun deleteTask( task : Task ) {
-        listOfTasks.remove(task)
     }
 
 }
