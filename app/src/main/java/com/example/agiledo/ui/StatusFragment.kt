@@ -1,21 +1,32 @@
 package com.example.agiledo.ui
 
+import android.app.Activity
+import android.transition.TransitionManager
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
-import com.example.agiledo.databinding.FragmentStatsBinding
+import com.example.agiledo.databinding.FragmentStatusBinding
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 
-class StatsFragment : BaseFragment<FragmentStatsBinding>() {
+class StatusFragment : BaseFragment<FragmentStatusBinding>() {
     override val LOG_TAG: String = "STATISTIC_FRAGMENT"
-    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentStatsBinding = FragmentStatsBinding ::inflate
+    override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentStatusBinding = FragmentStatusBinding ::inflate
 
     override fun setup() {
         setBarChartValues()
     }
 
     override fun addCallbacks() {
+        binding?.apply {
+            val homeFragment = HomeFragment()
+            openBoardButton.setOnClickListener {
+            addFragment(homeFragment)
+            }
+        }
     }
 
     /**
@@ -69,6 +80,11 @@ class StatsFragment : BaseFragment<FragmentStatsBinding>() {
             setPinchZoom(false)
             animateXY(2000,2000)
         }
+    }
+    private fun addFragment(fragment: Fragment) {
+        val transaction = (activity as HomeActivity).supportFragmentManager.beginTransaction()
+        transaction.add(R.id.fragment_container,fragment)
+        transaction.commit()
     }
 
 }

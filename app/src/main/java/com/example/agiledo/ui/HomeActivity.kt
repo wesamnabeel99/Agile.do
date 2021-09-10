@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.TaskDbHelper
@@ -14,7 +15,7 @@ import java.util.*
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
     private val homeFragment = HomeFragment()
-    private val statsFragment = StatsFragment()
+    private val statusFragment = StatusFragment()
     lateinit var binding: ActivityHomeBinding
     lateinit var dbHelper:TaskDbHelper
 
@@ -31,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region setup
     private fun setup() {
-        addFragment(statsFragment)
+        addFragment(statusFragment)
 
         for (i in 0..10) {
             val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
