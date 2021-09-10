@@ -4,7 +4,6 @@ import android.content.Context
 import com.example.agiledo.data.TaskDbHelper
 
 object Constants {
-    var taskId=0
     lateinit var dbHelper:TaskDbHelper
     fun createTable(context:Context){
         dbHelper=TaskDbHelper(context)

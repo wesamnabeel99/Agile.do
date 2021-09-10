@@ -57,7 +57,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
     private fun addNewTask() {
 
         val newTask = Task(
-            id=Constants.taskId++,
             taskName = binding?.taskName?.text.toString(),
             taskDescription = binding?.taskDescription?.text.toString(),
             taskStartDate = binding?.startDate?.text.toString(),
