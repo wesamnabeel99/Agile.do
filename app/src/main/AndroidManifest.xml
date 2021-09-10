@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/splashScreen">
         <activity
+            android:name=".date"
+            android:exported="true" />
+        <activity
             android:name=".ui.HomeActivity"
             android:exported="true">
             <intent-filter>
