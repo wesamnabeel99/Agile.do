@@ -1,6 +1,7 @@
 package com.example.agiledo.ui.adapters
 
 import android.app.Dialog
+import android.text.Editable
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,6 @@ import com.aghajari.emojiview.AXEmojiUtils
 import com.aghajari.emojiview.view.*
 import com.example.agiledo.R
 import com.example.agiledo.data.domain.Task
-import com.example.agiledo.databinding.EmojiDialogBinding
 import com.example.agiledo.databinding.ItemTaskBinding
 import com.example.agiledo.utils.Constants
 
@@ -54,8 +54,7 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                     //Create dialog object and initialize its attribute
                     val dialog = Dialog(holder.binding.root.context)
                     dialog.setContentView(R.layout.emoji_dialog)
-                    //Create emoji view to store the emoji selected
-                    val selectedEmoji = dialog.findViewById<AXEmojiEditText>(R.id.selected_emoji)
+
 
 
                     val emoji_one = dialog.findViewById<AXEmojiTextView>(R.id.emojiOne)
@@ -85,12 +84,9 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                     replaceStringWithEmoji()
 
 
-                    selectedEmoji.inputType = InputType.TYPE_NULL
                     fun addEmojiListeners(emojiView:AXEmojiTextView) {
                         emojiView.setOnClickListener(View.OnClickListener {
-                            selectedEmoji.setText(emojiView.text)
-                            val selectedEmoji = selectedEmoji.text
-                            taskImage.text = selectedEmoji
+                            taskImage.setText(emojiView.text)
                             dialog.dismiss()
                         })
                     }
@@ -105,13 +101,10 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                         addEmojiListeners(emoji_eight)
                         addEmojiListeners(emoji_nine)
                         addEmojiListeners(emoji_ten)
-
                     }
 
                     addEmojiListenersCallBacks()
-
                     dialog.show()
-                    selectedEmoji.setOnClickListener { selectedEmoji.text?.clear() }
                 }
             }
             addCallBack()
