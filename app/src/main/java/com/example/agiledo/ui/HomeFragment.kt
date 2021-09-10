@@ -2,10 +2,12 @@ package com.example.agiledo.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.FragmentHomeBinding
 import com.example.agiledo.ui.adapters.TaskAdapter
+import com.example.agiledo.utils.Date
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListener {
     //region initilize variables
@@ -18,7 +20,22 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
     override fun setup() {
         adapter = TaskAdapter(DataManager.listOfTasks, this)
         binding?.taskRecyclerView?.adapter =adapter
-    }
+
+          /**
+           * @param thisIteman an val to bind this item
+           * @param itemTouchHelper an val to add swipe to dismiss *
+           * @author Akram
+           **/
+          val thisItem = binding?.taskRecyclerView
+          val itemTouchHelper = ItemTouchHelper (SwipeToDelete(adapter))
+          itemTouchHelper.attachToRecyclerView(thisItem)
+
+          val cardView = binding?.taskRecyclerView
+
+
+
+      }
+
     //endregion
     //region  addCallbacks
     override fun addCallbacks() {

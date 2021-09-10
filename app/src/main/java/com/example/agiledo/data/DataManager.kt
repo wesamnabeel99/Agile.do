@@ -99,4 +99,8 @@ object DataManager {
 
 
 
+    fun deleteTask( task : Task ) {
+        listOfTasks.remove(task)
+    }
+
 }

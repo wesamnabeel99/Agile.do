@@ -4,9 +4,12 @@ import android.database.Cursor
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agiledo.R
+import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ItemTaskBinding
 import com.example.agiledo.ui.TaskInteractionListener
@@ -30,8 +33,11 @@ class TaskAdapter(private var list: List<Task>, private val listener : TaskInter
             taskDueDate.text = currentItem.taskDueDate
             taskAssignedTo.text= currentItem.taskAssignedTo
             deleteTask.setOnClickListener { listener.deleteTaskAt(position) }
+            cardView.animation = AnimationUtils.loadAnimation(holder.binding.cardView.context,R.anim.anim_item)
         }
     }
+
+
 
     //region set data
     /**
@@ -50,4 +56,5 @@ class TaskAdapter(private var list: List<Task>, private val listener : TaskInter
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskBinding.bind(itemView)
     }
+
 }

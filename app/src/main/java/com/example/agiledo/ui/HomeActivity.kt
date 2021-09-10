@@ -10,12 +10,14 @@ import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.TaskDbHelper
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ActivityHomeBinding
+import com.example.agiledo.utils.Date
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
     private val homeFragment = HomeFragment()
     private val statusFragment = StatusFragment()
+    private val dateFragment= Date()
     lateinit var binding: ActivityHomeBinding
     lateinit var dbHelper:TaskDbHelper
 
@@ -24,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
     //region onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_Agiledo)
         setContentView(R.layout.activity_home)
         dbHelper= TaskDbHelper(applicationContext)
         setup()
@@ -33,6 +36,7 @@ class HomeActivity : AppCompatActivity() {
     //region setup
     private fun setup() {
         addFragment(statusFragment)
+
 
         for (i in 0..10) {
             val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
