@@ -8,6 +8,7 @@
     app:cardElevation="@dimen/card_elevation_normal"
     app:cardCornerRadius="@dimen/cardCornersNormal"
     android:layout_margin="@dimen/marginNormal"
+    android:id="@+id/card_view"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
