@@ -20,7 +20,9 @@ object DataManager {
      */
     fun addTask(task: Task) {
         listOfTasks.add(task)
-    }
+        listOfTasks.groupBy {
+            task.state
+        }    }
     //endregion
 
     //region delete task
@@ -51,6 +53,7 @@ object DataManager {
             put(Constants.Database.TASK_START_DATE, task.taskStartDate)
             put(Constants.Database.TASK_DUE_DATE, task.taskDueDate)
             put(Constants.Database.TASK_ASSIGNED_TO, task.taskAssignedTo)
+            put(Constants.Database.STATE, task.state)
 
         }
 
@@ -76,7 +79,9 @@ object DataManager {
             Constants.Database.TASK_DESCRIPTION,
             Constants.Database.TASK_START_DATE,
             Constants.Database.TASK_DUE_DATE,
-            Constants.Database.TASK_ASSIGNED_TO
+            Constants.Database.TASK_ASSIGNED_TO,
+            Constants.Database.STATE
+
         ) //the array of columns
         val cursor =
             dbHelper.readableDatabase.query(Constants.Database.TABLE_NAME, projection, null, null, null, null, null)
@@ -87,7 +92,8 @@ object DataManager {
             val startDate = cursor.getString(Constants.CursorIndexes.TASK_START_DATE)
             val dueDate = cursor.getString(Constants.CursorIndexes.TASK_DUE_DATE)
             val author = cursor.getString(Constants.CursorIndexes.TASK_ASSIGNED_TO)
-             task=Task(taskName,taskDesc,startDate,dueDate,author)
+            val state = cursor.getString(Constants.CursorIndexes.STATE)
+            task=Task(taskName,taskDesc,startDate,dueDate,author,state)
 
           // Log.i("MAIN_ACTIVITY", "$id - $taskName -$taskDesc -$startDate - $dueDate - $author")
         }
@@ -103,4 +109,10 @@ object DataManager {
         listOfTasks.remove(task)
     }
 
+
+//    fun filterList (task: Task) {
+//        listOfTasks.groupBy {
+//            task.state
+//        }
+//    }
 }

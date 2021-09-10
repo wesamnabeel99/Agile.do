@@ -16,6 +16,7 @@ class HomeActivity : AppCompatActivity() {
     private val homeFragment = HomeFragment()
     lateinit var binding: ActivityHomeBinding
     lateinit var dbHelper:TaskDbHelper
+    lateinit var listOfStates: List<Any>
 
     //endregion
 
@@ -34,7 +35,9 @@ class HomeActivity : AppCompatActivity() {
         addFragment(homeFragment)
 
         for (i in 0..10) {
-            val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
+
+
+            val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i","State $i")
             DataManager.addTask(task1)
             DataManager.addNewTask(task1, dbHelper)
             //put the database columns values in list<TAsk>

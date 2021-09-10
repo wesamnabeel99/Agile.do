@@ -12,6 +12,8 @@ import androidx.viewbinding.ViewBinding
 abstract class BaseFragment<VB: ViewBinding> : Fragment() {
 
 
+    lateinit var state: Any
+
     //region initialize variables
     internal lateinit var MyDialog: Dialog
     abstract val LOG_TAG : String
@@ -47,4 +49,6 @@ abstract class BaseFragment<VB: ViewBinding> : Fragment() {
     protected fun log(value: String){
         Log.v(LOG_TAG,value)
     }
+
+
 }

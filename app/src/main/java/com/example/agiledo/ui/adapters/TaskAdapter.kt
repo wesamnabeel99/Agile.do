@@ -34,6 +34,9 @@ class TaskAdapter(private var list: List<Task>, private val listener : TaskInter
             taskAssignedTo.text= currentItem.taskAssignedTo
             deleteTask.setOnClickListener { listener.deleteTaskAt(position) }
             cardView.animation = AnimationUtils.loadAnimation(holder.binding.cardView.context,R.anim.anim_item)
+            taskTitle.text = currentItem.state
+
+
         }
     }
 

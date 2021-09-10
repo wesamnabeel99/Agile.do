@@ -38,8 +38,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
     //endregion
     //region  addCallbacks
     override fun addCallbacks() {
+
+//        binding?.doing?.setOnClickListener {
+//            filterList()
+//        }
         binding?.addTask?.setOnClickListener {
             addNewTask()
+
         }
     }
     //endregion
@@ -57,8 +62,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
             taskDescription = binding?.taskDescription?.text.toString(),
             taskStartDate = binding?.startDate?.text.toString(),
             taskDueDate = binding?.dueDate?.text.toString(),
-            taskAssignedTo = binding?.personName?.text.toString()
+            taskAssignedTo = binding?.personName?.text.toString(),
+            state = binding?.doing?.text.toString(),
         )
+        binding?.doing?.setOnClickListener { state = 0 }
+        binding?.inPregress?.setOnClickListener { state = 1 }
+        binding?.done?.setOnClickListener { state = 2 }
+
         DataManager.addTask(newTask)
         adapter.setData(DataManager.tasks)
     }

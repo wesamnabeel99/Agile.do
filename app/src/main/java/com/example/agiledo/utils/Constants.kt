@@ -13,6 +13,8 @@ object Constants {
         const val TASK_START_DATE = "startDate"
         const val TASK_DUE_DATE = "dueDate"
         const val TASK_ASSIGNED_TO = "assignedTo"
+        const val STATE = "state"
+
 
 
     }
@@ -24,6 +26,7 @@ object Constants {
         const val TASK_START_DATE = 3
         const val TASK_DUE_DATE = 4
         const val TASK_ASSIGNED_TO=5
+        const val STATE=6
 
 
 

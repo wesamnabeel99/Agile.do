@@ -6,4 +6,5 @@ data class Task(
     val taskStartDate: String,
     val taskDueDate: String,
     val taskAssignedTo: String,
+    val state: String
 )

@@ -7,6 +7,55 @@
     android:background="@color/background_color"
     android:padding="@dimen/paddingSmall">
 
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="١٦dp"
+        tools:layout_editor_absoluteY="٥dp">
+
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/doing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doing" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/in_pregress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In Progress" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All" />
+
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/title_of_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="title of state"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/task_recycler_view"
+        app:layout_constraintTop_toBottomOf="@+id/chip_group"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="٨dp" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/task_recycler_view"
         android:orientation="vertical"
@@ -17,6 +66,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_task"
+        android:layout_marginTop="40dp"
         />
 
     <EditText
