@@ -2,17 +2,17 @@ package com.example.agiledo.ui.adapters
 
 import android.app.Dialog
 import android.text.InputType
-import android.text.SpannableStringBuilder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatButton
 import androidx.recyclerview.widget.RecyclerView
 import com.aghajari.emojiview.AXEmojiUtils
 import com.aghajari.emojiview.view.*
 import com.example.agiledo.R
 import com.example.agiledo.data.domain.Task
+import com.example.agiledo.databinding.EmojiDialogBinding
 import com.example.agiledo.databinding.ItemTaskBinding
+import com.example.agiledo.utils.Constants
 
 
 class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskHolder>(){
@@ -26,6 +26,7 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
     override fun onBindViewHolder(holder: TaskHolder, position: Int) {
 
         var currentItem = list[position]
+
         holder.binding.apply {
             taskTitle.text = currentItem.taskName
             taskDescription.text = currentItem.taskDescription
@@ -36,20 +37,26 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
 
             fun addCallBack(){
                 //Place Holder For Emoji
-                val emojiUnicode = AXEmojiUtils.getEmojiUnicode(0x1f60d)
-                taskImage.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode,20F)
-                taskImage.inputType = InputType.TYPE_NULL
-                taskImage.setOnClickListener(View.OnClickListener {
+                val defaultEmoji = Constants.Emoji.CALL_EMOJI
 
-                    (taskImage.text as SpannableStringBuilder?)?.clear()
+                taskImage.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,defaultEmoji,20F)
+                taskImage.inputType = InputType.TYPE_NULL
+
+                fun getEmoji(emojiunicodeOne: String?): CharSequence? {
+                    return AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiunicodeOne,20F)
+                }
+
+                fun bindTheEmoji(emojiView: AXEmojiTextView, emojiCode:String) {
+                    emojiView.text = getEmoji(emojiCode)
+                }
+
+                taskImage.setOnClickListener {
                     //Create dialog object and initialize its attribute
                     val dialog = Dialog(holder.binding.root.context)
                     dialog.setContentView(R.layout.emoji_dialog)
                     //Create emoji view to store the emoji selected
-                    val selected = dialog.findViewById<AXEmojiEditText>(R.id.selected_emoji)
+                    val selectedEmoji = dialog.findViewById<AXEmojiEditText>(R.id.selected_emoji)
 
-                    val okBtn = dialog.findViewById<AppCompatButton>(R.id.ok_btn)
-                    val cancelBtn = dialog.findViewById<AppCompatButton>(R.id.cancel_btn)
 
                     val emoji_one = dialog.findViewById<AXEmojiTextView>(R.id.emojiOne)
                     val emoji_two = dialog.findViewById<AXEmojiTextView>(R.id.emojiTwo)
@@ -62,85 +69,50 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                     val emoji_nine = dialog.findViewById<AXEmojiTextView>(R.id.emojiNine)
                     val emoji_ten = dialog.findViewById<AXEmojiTextView>(R.id.emojiTen)
 
-                    val emojiUnicode_one = AXEmojiUtils.getEmojiUnicode(0x270F)
-                    val emojiUnicode_two = AXEmojiUtils.getEmojiUnicode(0x1F3AE)
-                    val emojiUnicode_three = AXEmojiUtils.getEmojiUnicode(0x1F489)
-                    val emojiUnicode_four = AXEmojiUtils.getEmojiUnicode(0x1F4AC)
-                    val emojiUnicode_five = AXEmojiUtils.getEmojiUnicode(0x1F4BF)
-                    val emojiUnicode_six = AXEmojiUtils.getEmojiUnicode(0x1F4C3)
-                    val emojiUnicode_seven = AXEmojiUtils.getEmojiUnicode(0x1F4CC)
-                    val emojiUnicode_eight = AXEmojiUtils.getEmojiUnicode(0x1F4CE)
-                    val emojiUnicode_nine = AXEmojiUtils.getEmojiUnicode(0x1F4D7)
-                    val emojiUnicode_ten = AXEmojiUtils.getEmojiUnicode(0x1F4DE)
-
                     fun replaceStringWithEmoji(){
-                        emoji_one.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_one,20F)
-                        emoji_two.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_two,20F)
-                        emoji_three.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_three,20F)
-                        emoji_four.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_four,20F)
-                        emoji_five.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_five,20F)
-                        emoji_six.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_six,20F)
-                        emoji_seven.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_seven,20F)
-                        emoji_eight.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_eight,20F)
-                        emoji_nine.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_nine,20F)
-                        emoji_ten.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode_ten,20F)
+                        bindTheEmoji(emoji_one,Constants.Emoji.PENCIL_EMOJI)
+                        bindTheEmoji(emoji_two,Constants.Emoji.GAMING_EMOJI)
+                        bindTheEmoji(emoji_three,Constants.Emoji.VACCINE_EMOJI)
+                        bindTheEmoji(emoji_four,Constants.Emoji.CHAT_EMOJI)
+                        bindTheEmoji(emoji_five,Constants.Emoji.BOOK_EMOJI)
+                        bindTheEmoji(emoji_six,Constants.Emoji.DVD_EMOJI)
+                        bindTheEmoji(emoji_seven,Constants.Emoji.PAPER_EMOJI)
+                        bindTheEmoji(emoji_eight,Constants.Emoji.PIN_EMOJI)
+                        bindTheEmoji(emoji_nine,Constants.Emoji.ATTACHMENT_EMOJI)
+                        bindTheEmoji(emoji_ten,Constants.Emoji.CALL_EMOJI)
                     }
+
                     replaceStringWithEmoji()
-                    selected.inputType = InputType.TYPE_NULL
-                    cancelBtn.setOnClickListener{
-                        dialog.dismiss()
-                        taskImage.text = AXEmojiUtils.replaceWithEmojis(holder.binding.root.context,emojiUnicode,20F)
+
+
+                    selectedEmoji.inputType = InputType.TYPE_NULL
+                    fun addEmojiListeners(emojiView:AXEmojiTextView) {
+                        emojiView.setOnClickListener(View.OnClickListener {
+                            selectedEmoji.setText(emojiView.text)
+                            val selectedEmoji = selectedEmoji.text
+                            taskImage.text = selectedEmoji
+                            dialog.dismiss()
+                        })
+                    }
+                    fun addEmojiListenersCallBacks() {
+                        addEmojiListeners(emoji_one)
+                        addEmojiListeners(emoji_two)
+                        addEmojiListeners(emoji_three)
+                        addEmojiListeners(emoji_four)
+                        addEmojiListeners(emoji_five)
+                        addEmojiListeners(emoji_six)
+                        addEmojiListeners(emoji_seven)
+                        addEmojiListeners(emoji_eight)
+                        addEmojiListeners(emoji_nine)
+                        addEmojiListeners(emoji_ten)
+
                     }
 
-                    emoji_one.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_one.text)
-                    })
-
-                    emoji_two.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_two.text)
-                    })
-
-                    emoji_three.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_three.text)
-                    })
-
-                    emoji_four.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_four.text)
-                    })
-
-                    emoji_five.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_five.text)
-                    })
-
-                    emoji_six.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_six.text)
-                    })
-
-                    emoji_seven.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_seven.text)
-                    })
-
-                    emoji_eight.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_eight.text)
-                    })
-
-                    emoji_nine.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_nine.text)
-                    })
-
-                    emoji_ten.setOnClickListener(View.OnClickListener {
-                        selected.setText(emoji_ten.text)
-                    })
+                    addEmojiListenersCallBacks()
 
                     dialog.show()
-                    okBtn.setOnClickListener{
-                        //TODO: Store the new emoji code in sql database.
-                        val selectedEmoji = selected.text
-                        taskImage.text = selectedEmoji
-                        dialog.dismiss()
-                    }
-                    selected.setOnClickListener { selected.text?.clear() }
-                })
+                    selectedEmoji.setOnClickListener { selectedEmoji.text?.clear() }
+                }
             }
             addCallBack()
         }
