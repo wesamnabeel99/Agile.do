@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Basheer Developer/Desktop/Team Orange Kanban Project/Agile.do/app/src/main/res/layout/emoji_dialog.xml" value="0.3596014492753623" />
+        <entry key="..\:/Users/Basheer Developer/Desktop/Team Orange Kanban Project/Agile.do/app/src/main/res/layout/item_task.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/SMART WAY/AndroidStudioProjects/Agile.do/app/src/main/res/layout/activity_home.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/SMART WAY/AndroidStudioProjects/Agile.do/app/src/main/res/layout/fragment_home.xml" value="0.29483695652173914" />
+        <entry key="..\:/Users/SMART WAY/AndroidStudioProjects/Agile.do/app/src/main/res/layout/item_task.xml" value="0.29483695652173914" />
         <entry key="..\:/Users/ik/AndroidStudioProjects/Agile.do/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/ik/AndroidStudioProjects/Agile.do/app/src/main/res/drawable/add_card_shape.xml" value="0.3828125" />
         <entry key="..\:/Users/ik/AndroidStudioProjects/Agile.do/app/src/main/res/drawable/first_letter_shape.xml" value="0.3828125" />
@@ -24,7 +29,9 @@
         <entry key="..\:/Users/ik/AndroidStudioProjects/Agile.do/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3769230769230769" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/activity_home.xml" value="0.128125" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/activity_main.xml" value="0.128125" />
+        <entry key="..\:/bk/Agiledo/app/src/main/res/layout/fragment_date.xml" value="0.128125" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/fragment_home.xml" value="0.128125" />
+        <entry key="..\:/bk/Agiledo/app/src/main/res/layout/fragment_stats.xml" value="0.128125" />
         <entry key="..\:/bk/Agiledo/app/src/main/res/layout/item_task.xml" value="0.22" />
       </map>
     </option>
