@@ -2,8 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 <item>
     <shape>
-        <gradient android:startColor="#CFD8DC" android:endColor="#B0BEC5"></gradient>
-        <corners android:radius="20dp"></corners>
+        <gradient android:startColor="@color/emojiShape_start_color" android:endColor="@color/emojiShape_end_color"></gradient>
+        <corners android:radius="@dimen/emoji_editText_radius"></corners>
     </shape>
 </item>
 </selector>

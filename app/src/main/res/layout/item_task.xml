@@ -20,8 +20,8 @@
 
         <com.aghajari.emojiview.view.AXEmojiEditText
             android:id="@+id/task_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/emoji_icon_size"
+            android:layout_height="@dimen/emoji_icon_size"
             android:maxLength="2"
 
             android:gravity="center"
@@ -112,6 +112,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="@dimen/marginNormal"
+            android:ems="1"
+            android:textAllCaps="true"
             android:background="@drawable/first_letter_shape"
             android:gravity="center"
             android:text="T"

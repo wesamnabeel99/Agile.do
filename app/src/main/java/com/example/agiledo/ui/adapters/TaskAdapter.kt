@@ -1,16 +1,12 @@
 package com.example.agiledo.ui.adapters
 
 import android.app.Dialog
-import android.text.Editable
 import android.text.InputType
 import android.text.SpannableStringBuilder
-import android.text.TextWatcher
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.widget.doAfterTextChanged
 import androidx.recyclerview.widget.RecyclerView
 import com.aghajari.emojiview.AXEmojiUtils
 import com.aghajari.emojiview.view.*
@@ -56,16 +52,16 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                 val cancelBtn = dialog.findViewById<AppCompatButton>(R.id.cancel_btn)
 
 
-                val emoji_one = dialog.findViewById<AXEmojiTextView>(R.id.emoji1)
-                val emoji_two = dialog.findViewById<AXEmojiTextView>(R.id.emoji2)
-                val emoji_three = dialog.findViewById<AXEmojiTextView>(R.id.emoji3)
-                val emoji_four = dialog.findViewById<AXEmojiTextView>(R.id.emoji4)
-                val emoji_five = dialog.findViewById<AXEmojiTextView>(R.id.emoji5)
-                val emoji_six = dialog.findViewById<AXEmojiTextView>(R.id.emoji6)
-                val emoji_seven = dialog.findViewById<AXEmojiTextView>(R.id.emoji7)
-                val emoji_eight = dialog.findViewById<AXEmojiTextView>(R.id.emoji8)
-                val emoji_nine = dialog.findViewById<AXEmojiTextView>(R.id.emoji9)
-                val emoji_ten = dialog.findViewById<AXEmojiTextView>(R.id.emoji10)
+                val emoji_one = dialog.findViewById<AXEmojiTextView>(R.id.emojiOne)
+                val emoji_two = dialog.findViewById<AXEmojiTextView>(R.id.emojiTwo)
+                val emoji_three = dialog.findViewById<AXEmojiTextView>(R.id.emojiThree)
+                val emoji_four = dialog.findViewById<AXEmojiTextView>(R.id.emojiFour)
+                val emoji_five = dialog.findViewById<AXEmojiTextView>(R.id.emojiFive)
+                val emoji_six = dialog.findViewById<AXEmojiTextView>(R.id.emojiSix)
+                val emoji_seven = dialog.findViewById<AXEmojiTextView>(R.id.emojiSeven)
+                val emoji_eight = dialog.findViewById<AXEmojiTextView>(R.id.emojiEight)
+                val emoji_nine = dialog.findViewById<AXEmojiTextView>(R.id.emojiNine)
+                val emoji_ten = dialog.findViewById<AXEmojiTextView>(R.id.emojiTen)
 
                 val emojiUnicode_one = AXEmojiUtils.getEmojiUnicode(0x270F)
                 val emojiUnicode_two = AXEmojiUtils.getEmojiUnicode(0x1F3AE)
@@ -140,15 +136,14 @@ class TaskAdapter(var list: List<Task>) : RecyclerView.Adapter<TaskAdapter.TaskH
                 dialog.show()
                 okBtn.setOnClickListener{
                     //TODO: Store the new emoji code in sql database.
-                    val x = selected.text
-                    taskImage.text = x
+                    val selectedEmoji = selected.text
+                    taskImage.text = selectedEmoji
                     dialog.dismiss()
                 }
                 selected.setOnClickListener { selected.text?.clear() }
             })
         }
     }
-
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskBinding.bind(itemView)
     }

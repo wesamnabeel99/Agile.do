@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region callbacks
     private fun addCallBacks() {
-
+        //TODO ADD CALLBACKS
     }
     //endregion
 
