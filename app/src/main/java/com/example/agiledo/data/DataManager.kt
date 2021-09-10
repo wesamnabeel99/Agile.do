@@ -46,6 +46,7 @@ object DataManager {
 
     fun addNewTaskToDatabase(task: Task) {
         val newEntry = ContentValues().apply {
+            put(Constants.Database.TASK_ID,0)
             put(Constants.Database.TASK_NAME, task.taskName)
             put(Constants.Database.TASK_DESCRIPTION, task.taskDescription)
             put(Constants.Database.TASK_START_DATE, task.taskStartDate)
@@ -72,6 +73,7 @@ object DataManager {
     fun readTask(dbHelper: TaskDbHelper){
         lateinit var task: Task
         val projection = arrayOf(
+            Constants.Database.TASK_ID,
             Constants.Database.TASK_NAME,
             Constants.Database.TASK_DESCRIPTION,
             Constants.Database.TASK_START_DATE,
@@ -96,7 +98,6 @@ object DataManager {
             val dueDate = cursor.getString(Constants.CursorIndexes.TASK_DUE_DATE)
             val author = cursor.getString(Constants.CursorIndexes.TASK_ASSIGNED_TO)
             tasksFromTable.add(Task(taskName, taskDesc, startDate, dueDate, author))
-
         }
     }
 
