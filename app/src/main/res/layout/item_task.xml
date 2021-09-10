@@ -9,17 +9,19 @@
     app:cardCornerRadius="@dimen/cardCornersNormal"
     android:layout_margin="@dimen/marginNormal"
     android:padding="@dimen/paddingNormal"
+    android:alpha="0.85"
     android:id="@+id/card_view"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.7"
-        android:padding="@dimen/paddingNormal">
+        android:padding="@dimen/paddingNormal"
+        >
 
 
         <com.aghajari.emojiview.view.AXEmojiEditText
+            android:alpha="1"
             android:id="@+id/task_image"
             android:layout_width="@dimen/emoji_icon_size"
             android:layout_height="@dimen/emoji_icon_size"
@@ -33,13 +35,14 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageButton
+            android:alpha="1"
             android:id="@+id/delete_task"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="@dimen/marginNormal"
             android:background="@drawable/ic_trash"
             android:rotationY="180"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/task_assigned_to"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/task_assigned_to"
@@ -48,6 +51,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
+            android:alpha="1"
             android:id="@+id/task_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -62,6 +66,7 @@
             app:layout_constraintVertical_bias="0.185" />
 
         <TextView
+            android:alpha="1"
             android:id="@+id/task_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -73,6 +78,7 @@
             app:layout_constraintTop_toBottomOf="@+id/task_title" />
 
         <TextView
+            android:alpha="1"
             android:id="@+id/task_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -84,6 +90,7 @@
             app:layout_constraintTop_toBottomOf="@+id/task_description" />
 
         <TextView
+            android:alpha="1"
             android:id="@+id/task_due_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,6 +102,7 @@
             app:layout_constraintTop_toBottomOf="@+id/task_start_date" />
 
         <TextView
+            android:alpha="1"
             android:id="@+id/task_assigned_to"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -109,6 +117,7 @@
             app:layout_constraintTop_toTopOf="@+id/person_first_letter" />
 
         <TextView
+            android:alpha="1"
             android:id="@+id/person_first_letter"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -123,28 +132,6 @@
             app:layout_constraintStart_toStartOf="@+id/task_due_date"
             app:layout_constraintTop_toBottomOf="@+id/task_due_date" />
 
-        <TextView
-            android:id="@+id/tag_one"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/marginNormal"
-            android:background="@drawable/tag_shape_design"
-            android:gravity="center"
-            android:text="Tag 1"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toStartOf="@+id/tag_two"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tag_two"
-            android:layout_width="60dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/tag_shape_test"
-            android:gravity="center"
-            android:text="Tag 2"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
