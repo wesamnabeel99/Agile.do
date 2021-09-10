@@ -59,8 +59,6 @@ object DataManager {
         }
 
         Constants.dbHelper.writableDatabase.insert(Constants.Database.TABLE_NAME, null, newEntry)
-
-
     }
 
 
@@ -106,11 +104,9 @@ object DataManager {
     }
 
 
+     fun deleteTask(id:Int) {
 
-
-    fun deleteTask(id:Int) {
-        Constants.dbHelper.writableDatabase.delete(Constants.Database.TABLE_NAME,"${Constants.Database.TASK_ID}=?", arrayOf<String>("$id"))
+        Constants.dbHelper.writableDatabase.delete(Constants.Database.TABLE_NAME,"${Constants.Database.TASK_ID}=?",
+            arrayOf("$id"))
     }
-
-
 }

@@ -56,5 +56,4 @@ class TaskAdapter(private var list: List<Task>, private val listener : TaskInter
     class TaskHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val binding = ItemTaskBinding.bind(itemView)
     }
-
 }
