@@ -3,6 +3,7 @@ package com.example.agiledo.ui
 import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.aghajari.emojiview.view.AXSingleEmojiView
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.agiledo.R
 import com.example.agiledo.data.DataManager

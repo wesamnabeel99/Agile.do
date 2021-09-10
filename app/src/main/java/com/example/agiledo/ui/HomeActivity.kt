@@ -1,5 +1,6 @@
 package com.example.agiledo.ui
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,13 @@ import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ActivityHomeBinding
 import com.example.agiledo.utils.Date
 import java.util.*
+import java.security.cert.Certificate
+import com.aghajari.emojiview.iosprovider.AXIOSEmojiProvider
+
+import com.aghajari.emojiview.AXEmojiManager
+import com.aghajari.emojiview.view.AXSingleEmojiView
+import com.example.agiledo.databinding.EmojiDialogBinding
+
 
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
@@ -35,6 +43,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region setup
     private fun setup() {
+        AXEmojiManager.install(this,AXIOSEmojiProvider(this))
         addFragment(statusFragment)
 
 
@@ -52,11 +61,12 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
     //endregion
 
     //region callbacks
     private fun addCallBacks() {
-
+        //TODO ADD CALLBACKS
     }
     //endregion
 

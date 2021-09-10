@@ -12,5 +12,6 @@
     <dimen name="card_elevation_normal">8dp</dimen>
     <dimen name="cardCornersNormal">8dp</dimen>
     <dimen name="marginHuge">48dp</dimen>
-
+    <dimen name="emoji_icon_size">40dp</dimen>
+    <dimen name="emoji_editText_radius">20dp</dimen>
 </resources>
