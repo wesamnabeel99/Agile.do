@@ -21,6 +21,7 @@ import com.aghajari.emojiview.iosprovider.AXIOSEmojiProvider
 import com.aghajari.emojiview.AXEmojiManager
 import com.aghajari.emojiview.view.AXSingleEmojiView
 import com.example.agiledo.databinding.EmojiDialogBinding
+import com.example.agiledo.utils.Constants.dbHelper
 
 
 class HomeActivity : AppCompatActivity(){
@@ -44,22 +45,10 @@ class HomeActivity : AppCompatActivity(){
     //region setup
     private fun setup() {
         addFragment(statusFragment)
-        DataManager.readTask(Constants.dbHelper)
+        DataManager.readTask(dbHelper)
         AXEmojiManager.install(this,AXIOSEmojiProvider(this))
 
 
-        for (i in 0..10) {
-            val task1 = Task("task $i", "beautiful task", "12/2/2021", "1/10/2021", "Wesam $i")
-            DataManager.addTask(task1)
-            DataManager.addNewTask(task1, dbHelper)
-            //put the database columns values in list<TAsk>
-            val task = DataManager.readTask(dbHelper)
-
-            Log.i(
-                "MAIN_ACTIVITY",
-                "$task.id - ${task.taskName} -${task.taskDescription} -${task.taskStartDate} - ${task.taskDueDate} - ${task.taskAssignedTo}"
-            )
-        }
 
     }
 

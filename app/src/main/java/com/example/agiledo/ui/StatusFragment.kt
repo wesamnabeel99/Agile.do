@@ -46,7 +46,7 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>() {
 
         // Y values
         val numberOfTasks = ArrayList<BarEntry>()
-        val listOfInBackingSize = DataManager.listOfTasks.size
+        val listOfInBackingSize = DataManager.tasksFromTable.size
         numberOfTasks.add(BarEntry(listOfInBackingSize.toFloat(),0))
         numberOfTasks.add(BarEntry(5.7f, 1))
         numberOfTasks.add(BarEntry(1.5f, 2))

@@ -61,16 +61,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
      * @return nothing
      * @author Anwar
      */
-    private fun addNewTask() {
-
-        val newTask = Task(
-            taskName = binding?.taskName?.text.toString(),
-            taskDescription = binding?.taskDescription?.text.toString(),
-            taskStartDate = binding?.startDate?.text.toString(),
-            taskDueDate = binding?.dueDate?.text.toString(),
-            taskAssignedTo = binding?.personName?.text.toString())
-        DataManager.addTask(newTask)
-        adapter.setData(DataManager.tasks)    }
 
     private fun openAddDialog() {
         val addDialogView = LayoutInflater.from(context).inflate(R.layout.fragment_add_dialog, null) //Inflate the dialog with add view
@@ -92,8 +82,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
                 taskAssignedTo = dialogBinding.assignToInputEdittext.text.toString()
             )
             DataManager.addTask(newTask)
-            adapter.setData(DataManager.tasks)
+            adapter.setData(DataManager.tasksFromTable)
         }
+    }
     //endregion
 
 
@@ -106,7 +97,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
      */
     override fun deleteTaskAt(index: Int) {
         DataManager.deleteTaskAt(index)
-        adapter.setData(DataManager.tasks)
+        adapter.setData(DataManager.tasksFromTable)
     }
     //endregion
 }
