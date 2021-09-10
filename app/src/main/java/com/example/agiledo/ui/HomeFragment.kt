@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import com.example.agiledo.data.DataManager
 import com.example.agiledo.databinding.FragmentHomeBinding
 import com.example.agiledo.ui.adapters.TaskAdapter
+import com.example.agiledo.utils.Date
 
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val LOG_TAG: String = "HOME_FRAGMENT"
-
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding = FragmentHomeBinding::inflate
 
       override fun setup() {
@@ -17,6 +17,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     }
 
     override fun addCallbacks() {
-        //TODO : "Not Yet Implemented"
     }
+
 }

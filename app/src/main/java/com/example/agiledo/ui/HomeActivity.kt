@@ -7,12 +7,13 @@ import com.example.agiledo.R
 import com.example.agiledo.data.DataManager
 import com.example.agiledo.data.domain.Task
 import com.example.agiledo.databinding.ActivityHomeBinding
+import com.example.agiledo.utils.Date
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     //region initilize variables
-  //  private val homeFragment = HomeFragment()
- private val dateFragment=DateFragment()
+    private val homeFragment = HomeFragment()
+    private val dateFragment= Date()
 
     lateinit var binding: ActivityHomeBinding
     //endregion
@@ -27,11 +28,7 @@ class HomeActivity : AppCompatActivity() {
 
     //region setup
     private fun setup() {
-        addFragment(dateFragment)
-        for (i in 0..10) {
-            val task = Task("task $i","beautiful task","12/2/2021","1/10/2021","Wesam $i")
-            DataManager.addTask(task)
-        }
+        addFragment(homeFragment)
     }
     //endregion
 
