@@ -17,7 +17,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
     override val LOG_TAG: String = "HOME_FRAGMENT"
     override val bindingInflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentHomeBinding = FragmentHomeBinding::inflate
     lateinit var adapter : TaskAdapter
-
     //endregion
 
     //region setup
@@ -38,27 +37,33 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
 
 
         }
-
-
     //endregion
+
+
     //region  addCallbacks
     override fun addCallbacks() {
-
         binding?.addTask?.setOnClickListener {
            openAddDialog()
         }
     }
+    //endregion
 
+
+    //region deleteTaskAt
+    /**
+     * open dialog box to add task to the list
+     * @param nothing
+     * @return nothing
+     * @author Anwar
+     */
     private fun openAddDialog() {
         val addDialogView = LayoutInflater.from(context).inflate(R.layout.fragment_add_dialog, null) //Inflate the dialog with add view
-        var dialogBinding = FragmentAddDialogBinding.bind(addDialogView)
+        val dialogBinding = FragmentAddDialogBinding.bind(addDialogView)
         val mBuilder = AlertDialog.Builder(context)
             .setView(addDialogView)
             .setTitle("Add New Task")
         val mAlertDialog = mBuilder.show()  //show dialog
 
-
-        //confirm add button of add layout ,
         dialogBinding.confirmAdd.setOnClickListener{
             mAlertDialog.dismiss()
             val newTask = Task(
@@ -73,7 +78,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() , TaskInteractionListen
         }
     }
     //endregion
-
 
     //region deleteTaskAt
     /**
